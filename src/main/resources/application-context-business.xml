@@ -8,12 +8,7 @@
 	   http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
     <bean id="lifecycleService" class="com.ossia.springsecurity.service.impl.LifecycleServiceImpl">
-
     </bean>
-
-    <security:http auto-config='true'>
-        <security:intercept-url pattern="/**" access="ROLE_USER" />
-    </security:http>
 
     <security:global-method-security secured-annotations="enabled" jsr250-annotations="enabled" pre-post-annotations="enabled">
         <security:protect-pointcut expression="execution(* com.ossia..*Service.*(..))" access="ROLE_CUSTOMER" />
