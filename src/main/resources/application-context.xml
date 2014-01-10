@@ -11,18 +11,22 @@
 
     </bean>
 
-    <security:http auto-config='true'>
-        <security:intercept-url pattern="/**" access="ROLE_USER" />
+    <security:http>
+        <security:form-login></security:form-login>
+        <security:logout></security:logout>
+
+        <security:intercept-url pattern="/pages/page1.jsp" access="ROLE_USER" />
+        <security:intercept-url pattern="/pages/page2.jsp" access="ROLE_ADMIN" />
     </security:http>
 
     <security:global-method-security secured-annotations="enabled" jsr250-annotations="enabled" pre-post-annotations="enabled">
         <security:protect-pointcut expression="execution(* com.ossia..*Service.*(..))" access="ROLE_CUSTOMER" />
     </security:global-method-security>
 
-    <security:authentication-manager id="authenticationManager">
+    <security:authentication-manager>
         <security:authentication-provider>
             <security:user-service>
-                <security:user name="admin" password="123456" authorities="ROLE_ADMIN" />
+                <security:user name="admin" password="123456" authorities="ROLE_ADMIN, ROLE_USER" />
                 <security:user name="simple" password="123456" authorities="ROLE_USER" />
                 <security:user name="amok" password="123456" authorities="ROLE_USER, ROLE_ADMIN, ROLE_CUSTOMER" />
             </security:user-service>

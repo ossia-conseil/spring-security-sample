@@ -8,6 +8,6 @@
       <a href="/pages/page2.jsp">page2</a>
       <a href="/j_spring_security_logout">logout</a>
       <br>
-      Home Page
+      Page 1
   </body>
 </html>
